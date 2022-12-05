@@ -41,6 +41,44 @@ const calculateTotalScore = (data) => {
   return totalScore;
 };
 
-calculateTotalScore(strategyData);
+const calculateCorrectScore = (data) => {
+  let gameData = data.split("\n");
+  let totalScore = 0;
 
-module.exports = calculateTotalScore;
+  for (let i = 0; i < gameData.length; i++) {
+    switch (gameData[i]) {
+      case "A X":
+        totalScore += 3;
+        break;
+      case "A Y":
+        totalScore += 4;
+        break;
+      case "A Z":
+        totalScore += 8;
+        break;
+      case "B X":
+        totalScore += 1;
+        break;
+      case "B Y":
+        totalScore += 5;
+        break;
+      case "B Z":
+        totalScore += 9;
+        break;
+      case "C X":
+        totalScore += 2;
+        break;
+      case "C Y":
+        totalScore += 6;
+        break;
+      case "C Z":
+        totalScore += 7;
+    }
+  }
+  return totalScore;
+};
+
+calculateTotalScore(strategyData);
+calculateCorrectScore(strategyData);
+
+module.exports = { calculateTotalScore, calculateCorrectScore };
